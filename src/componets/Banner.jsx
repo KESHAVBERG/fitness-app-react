@@ -30,8 +30,8 @@ const Banner = () => {
             </Typography>
 
             <ThemeProvider theme={theme}>
-                <Button color="neutral" variant="contained" href='#excercises'>
-                    Search Excercises
+                <Button color="neutral" variant="contained" href='#exercises'>
+                    Search Exercises
                 </Button>
             </ThemeProvider>
         </Box>
