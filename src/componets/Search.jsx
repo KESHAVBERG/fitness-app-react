@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Stack, TextField } from '@mui/material';
+import {options, fetchData} from '../utils/fetchData.js'
 
 import '../App.css'
 export const Search = () => {
   const [search, setSearch] = useState('')
 
   const handleSearch = async()=>{
-
+    const data = await fetchData('https://exercisedb.p.rapidapi.com/exercises',options)
+    console.log(data)
   }
   return (
     <Stack alignItems="center" mt="30px" justifyContent="center" p="20px">
