@@ -5,11 +5,28 @@ import {options, fetchData} from '../utils/fetchData.js'
 import '../App.css'
 export const Search = () => {
   const [search, setSearch] = useState('')
+  const [result, setResult]= useState([])
 
+  const [bodyPart, setBodyPart] = useState([])
   const handleSearch = async()=>{
     const data = await fetchData('https://exercisedb.p.rapidapi.com/exercises',options)
-    console.log(data)
+
+    const searchResult = data.filter((ex)=> ex.name.toLowerCase().includes(search)
+    || ex.bodyPart.toLowerCase().includes(search)
+    || ex.target.toLowerCase().includes(search)
+    || ex.equipment.toLowerCase().includes(search)
+    )
+
+    setSearch('')
+
+    setResult(searchResult)
+
+    console.log(searchResult)
   }
+
+  useEffect(()=>{
+    const fetchCategoryData = fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', options)
+  })
   return (
     <Stack alignItems="center" mt="30px" justifyContent="center" p="20px">
 
