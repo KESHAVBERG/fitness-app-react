@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Stack, TextField } from '@mui/material';
-import {options, fetchData} from '../utils/fetchData.js'
+import { options, fetchData } from '../utils/fetchData.js'
 
 import '../App.css'
 export const Search = () => {
   const [search, setSearch] = useState('')
-  const [result, setResult]= useState([])
+  const [result, setResult] = useState([])
 
   const [bodyPart, setBodyPart] = useState([])
-  const handleSearch = async()=>{
-    const data = await fetchData('https://exercisedb.p.rapidapi.com/exercises',options)
+  const handleSearch = async () => {
+    const data = await fetchData('https://exercisedb.p.rapidapi.com/exercises', options)
 
-    const searchResult = data.filter((ex)=> ex.name.toLowerCase().includes(search)
-    || ex.bodyPart.toLowerCase().includes(search)
-    || ex.target.toLowerCase().includes(search)
-    || ex.equipment.toLowerCase().includes(search)
+    const searchResult = data.filter((ex) => ex.name.toLowerCase().includes(search)
+      || ex.bodyPart.toLowerCase().includes(search)
+      || ex.target.toLowerCase().includes(search)
+      || ex.equipment.toLowerCase().includes(search)
     )
 
     setSearch('')
@@ -24,9 +24,13 @@ export const Search = () => {
     console.log(searchResult)
   }
 
-  useEffect(()=>{
-    const fetchCategoryData = fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', options)
-  })
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      const bodyPartResponse = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', options)
+
+      setBodyPart(['all', ...bodyPartResponse])
+    }
+  }, [])
   return (
     <Stack alignItems="center" mt="30px" justifyContent="center" p="20px">
 
@@ -50,28 +54,31 @@ export const Search = () => {
           }
           placeholder='Search'
           value={search}
-          onChange={(e) => {setSearch(e.target.value.toLowerCase()) }}
+          onChange={(e) => { setSearch(e.target.value.toLowerCase()) }}
           type="text"
         >
         </TextField>
 
         <Button className='search-btn'
-        sx={
-          {
-            color:'white',
-            bgcolor:'orange',
-            width:{lg:'100px', xs:'80px'},
-            fontSize:{lg:'20px', xs:'14px'},
-            height:'56px',
-            position:'absolute',
-            right:"0"
+          sx={
+            {
+              color: 'white',
+              bgcolor: 'orange',
+              width: { lg: '100px', xs: '80px' },
+              fontSize: { lg: '20px', xs: '14px' },
+              height: '56px',
+              position: 'absolute',
+              right: "0"
+            }
           }
-        }
-        onClick = {handleSearch}
+          onClick={handleSearch}
         >
           Search
         </Button>
 
+          <Box sx={{position:'relative', width:'100%', p:'20px'}}>
+
+          </Box>
       </Box>
 
     </Stack>
