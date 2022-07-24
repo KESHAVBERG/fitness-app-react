@@ -5,11 +5,25 @@ import { Search } from '../componets/Search';
 import Excercises from '../componets/Excercises';
 
 const Home = () => {
+  const [selectedBodyPart, setSelectedBodyPart] = useState('all')
+  const [result, setResult] = useState([])
+
+
   return (
     <Box>
       <Banner />
-      <Search />
-      <Excercises />
+
+      <Search 
+      selectedBodyPart={selectedBodyPart} 
+      setSelectedBodyPart={setSelectedBodyPart} 
+      setResult={setResult} 
+      />
+
+      <Excercises 
+         selectedBodyPart={selectedBodyPart} 
+         setSelectedBodyPart={setSelectedBodyPart} 
+         setResult={setResult} 
+      />
     </Box>
   )
 }

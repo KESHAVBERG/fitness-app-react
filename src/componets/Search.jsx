@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Stack, TextField } from '@mui/material';
 import { options, fetchData } from '../utils/fetchData.js'
-
 import '../App.css'
-export const Search = () => {
+import HorizontalList from './HorizontalList.jsx';
+
+export const Search = ({selectedBodyPart, setSelectedBodyPart, setResult}) => {
   const [search, setSearch] = useState('')
-  const [result, setResult] = useState([])
 
   const [bodyPart, setBodyPart] = useState([])
+
+
   const handleSearch = async () => {
     const data = await fetchData('https://exercisedb.p.rapidapi.com/exercises', options)
 
@@ -30,6 +32,8 @@ export const Search = () => {
 
       setBodyPart(['all', ...bodyPartResponse])
     }
+
+    fetchCategoryData()
   }, [])
   return (
     <Stack alignItems="center" mt="30px" justifyContent="center" p="20px">
@@ -76,9 +80,10 @@ export const Search = () => {
           Search
         </Button>
 
-          <Box sx={{position:'relative', width:'100%', p:'20px'}}>
+        <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
+          <HorizontalList data={bodyPart} selectedPart={selectedBodyPart} setSelectedBodyPart={setSelectedBodyPart} />
 
-          </Box>
+        </Box>
       </Box>
 
     </Stack>
