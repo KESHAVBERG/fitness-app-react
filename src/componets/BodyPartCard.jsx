@@ -1,8 +1,29 @@
 import React from 'react'
+import { Stack, Typography } from '@mui/material'
+import { width } from '@mui/system'
 
-const BodyPartCard = () => {
+
+const BodyPartCard = ({ item, slectedBodyPart, setSelectedBodyPart }) => {
   return (
-    <div>BodyPartCard</div>
+    <Stack
+      type="button"
+      justifyContent="center"
+      alignItems="center"
+      className="bodyPart-card"
+      sx={{
+        borderTop: item === slectedBodyPart ? "4px solid #FFB833" : "",
+        width: "20px",
+        height: "20px",
+        cursor: 'pointer',
+        gap: "20px"
+      }
+
+      }
+    >
+      <Typography>
+        {item}
+      </Typography>
+    </Stack>
   )
 }
 
