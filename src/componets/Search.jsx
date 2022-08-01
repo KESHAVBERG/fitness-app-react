@@ -80,10 +80,9 @@ export const Search = ({selectedBodyPart, setSelectedBodyPart, setResult}) => {
           Search
         </Button>
 
-        <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
+        <Box sx={{ }}>
           <HorizontalList data={bodyPart} selectedPart={selectedBodyPart} setSelectedBodyPart={setSelectedBodyPart} />
-
-        </Box>
+      </Box>
       </Box>
 
     </Stack>

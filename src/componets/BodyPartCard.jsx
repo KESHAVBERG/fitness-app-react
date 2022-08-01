@@ -12,7 +12,7 @@ const BodyPartCard = ({ item, slectedBodyPart, setSelectedBodyPart }) => {
       className="bodyPart-card"
       sx={{
         borderTop: item === slectedBodyPart ? "4px solid #FFB833" : "",
-        width: "20px",
+        width: "90px",
         height: "20px",
         cursor: 'pointer',
         gap: "20px"
