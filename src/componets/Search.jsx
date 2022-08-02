@@ -71,7 +71,7 @@ export const Search = ({selectedBodyPart, setSelectedBodyPart, setResult}) => {
               width: { lg: '100px', xs: '80px' },
               fontSize: { lg: '20px', xs: '14px' },
               height: '56px',
-              position: 'absolute',
+              // position: 'absolute',
               right: "0"
             }
           }
