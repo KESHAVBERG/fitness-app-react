@@ -22,7 +22,7 @@ const Home = () => {
       <Excercises 
          selectedBodyPart={selectedBodyPart} 
          setSelectedBodyPart={setSelectedBodyPart} 
-         setResult={setResult} 
+         result={result} 
       />
     </Box>
   )
