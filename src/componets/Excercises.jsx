@@ -8,7 +8,10 @@ const Excercises = ({ selectedBodyPart, setSelectedBodyPart, result }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const excercisesPerPage = 9;
 
-  
+  const indexOfLastExercise = currentPage * excercisesPerPage;
+  const indexOfFirstExercise = indexOfLastExercise - excercisesPerPage;
+  const currentExercises = result.slice(indexOfFirstExercise, indexOfLastExercise);
+
   const pageinate = (e, value) =>{
     setCurrentPage(value);
     window.scrollTo({top:1800, behavior:"smooth"})
@@ -34,7 +37,7 @@ const Excercises = ({ selectedBodyPart, setSelectedBodyPart, result }) => {
         flexWrap="wrap"
       >
         {
-          result.map((r, index) => (
+          currentExercises.map((r, index) => (
             <ExcerciseCard key={index} excercise = {r} />
             ))
         }

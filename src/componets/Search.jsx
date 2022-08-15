@@ -78,11 +78,7 @@ export const Search = ({selectedBodyPart, setSelectedBodyPart, setResult}) => {
           onClick={handleSearch}
         >
           Search
-        </Button>
-
-        <Box sx={{ }}>
-          <HorizontalList data={bodyPart} selectedPart={selectedBodyPart} setSelectedBodyPart={setSelectedBodyPart} />
-      </Box>
+        </Button>    
       </Box>
 
     </Stack>
