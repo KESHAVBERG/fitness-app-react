@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, Stack, TextField } from '@mui/material';
 import { options, fetchData } from '../utils/fetchData.js'
 import '../App.css'
-import HorizontalList from './HorizontalList.jsx';
 
 export const Search = ({selectedBodyPart, setSelectedBodyPart, setResult}) => {
   const [search, setSearch] = useState('')
